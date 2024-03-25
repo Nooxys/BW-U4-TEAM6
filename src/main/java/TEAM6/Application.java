@@ -1,11 +1,14 @@
 package TEAM6;
 
-import TEAM6.entities.Stores;
+import TEAM6.entities.Subscription;
 import TEAM6.entities.Transport;
+import TEAM6.enums.SubType;
 import TEAM6.enums.TransportStatus;
 import TEAM6.enums.TransportType;
 import com.github.javafaker.Faker;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +16,15 @@ import java.util.Random;
 
 public class Application {
 Random random = new Random();
-//    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("BW4");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("BW4");
 
     public static void main(String[] args) {
-        List<Stores.Subscription> subscriptionList = new ArrayList<>();
+
+        EntityManager em = emf.createEntityManager();
+
+        List<Subscription> subscriptionList = new ArrayList<>();
         for (int i = 0; i <20 ; i++) {
-            Stores.Subscription prova = new Stores.Subscription(5.99, TransportType.SubType.randomSubType());
+            Subscription prova = new Subscription(5.99, SubType.randomSubType());
             subscriptionList.add(prova);
         }
         subscriptionList.forEach(System.out::println);
@@ -26,7 +32,6 @@ Random random = new Random();
 
         Faker faker = new Faker();
 
-        EntityManager em = emf.createEntityManager();
 
         List<Transport> transportList = new ArrayList<>();
 

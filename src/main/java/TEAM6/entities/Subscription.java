@@ -1,5 +1,6 @@
 package TEAM6.entities;
 
+import TEAM6.enums.SubType;
 import TEAM6.enums.TransportType;
 
 import java.time.LocalDate;
@@ -11,7 +12,7 @@ public class Subscription extends Rate {
     // ATTRIBUTES
 
     private long id;
-    private TransportType.SubType type;
+    private SubType type;
     private LocalDate startingDate;
     private LocalDate endingDate;
     private long duration;
@@ -22,7 +23,7 @@ public class Subscription extends Rate {
     public Subscription(){
 
     }
-    public Subscription(double price, TransportType.SubType type ) {
+    public Subscription(double price, SubType type ) {
         super(price);
         this.type = type;
         setStartingDate();
@@ -33,11 +34,11 @@ public class Subscription extends Rate {
     // METHODS
 
 
-    public TransportType.SubType getType() {
+    public SubType getType() {
         return type;
     }
 
-    public void setType(TransportType.SubType type) {
+    public void setType(SubType type) {
         this.type = type;
     }
 
@@ -47,7 +48,7 @@ public class Subscription extends Rate {
 
     public void setStartingDate() {
         Random random = new Random();
-        if ( this.type == TransportType.SubType.WEEKLY) {
+        if ( this.type == SubType.WEEKLY) {
 
             this.startingDate = LocalDate.of(2024, random.nextInt(1,7), random.nextInt(1,29));
         } else {
@@ -60,7 +61,7 @@ public class Subscription extends Rate {
     }
 
     public void setEndingDate() {
-        if ( this.type == TransportType.SubType.WEEKLY) {
+        if ( this.type == SubType.WEEKLY) {
 
             this.endingDate = this.startingDate.plusDays(7) ;
         } else { this.endingDate = this.startingDate.plusMonths(1).minusDays(1);

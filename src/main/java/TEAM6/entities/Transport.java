@@ -77,7 +77,7 @@ public class Transport {
     public void setOnServiceStart() {
         if (this.transportStatus == TransportStatus.ON_SERVICE) {
             Random random = new Random();
-            this.onServiceStart = LocalDate.of(2024, random.nextInt(1, 7), random.nextInt(1, 30));
+            this.onServiceStart = LocalDate.of(2024, random.nextInt(1, 7), random.nextInt(1, 29));
         } else this.onServiceStart = null;
     }
 
@@ -109,7 +109,7 @@ public class Transport {
     public void setUnderMaintenanceStart() {
         if (this.transportStatus == TransportStatus.UNDER_MAINTENANCE) {
             Random random = new Random();
-            this.underMaintenanceStart = LocalDate.of(2024, random.nextInt(1, 7), random.nextInt(1, 30));
+            this.underMaintenanceStart = LocalDate.of(2024, random.nextInt(1, 7), random.nextInt(1, 29));
         } else this.underMaintenanceStart = null;
     }
 

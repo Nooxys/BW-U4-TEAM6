@@ -1,4 +1,4 @@
-package TEAM6;
+package TEAM6.entities;
 
 public abstract class Rate {
 

@@ -1,6 +1,10 @@
 package TEAM6.entities;
 
-import jakarta.persistence.*;
+import TEAM6.enums.TransportType;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Random;
 
 //@Entity
 //@Table(name = "stores")

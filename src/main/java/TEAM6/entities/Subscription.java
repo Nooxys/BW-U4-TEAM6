@@ -1,4 +1,6 @@
-package TEAM6;
+package TEAM6.entities;
+
+import TEAM6.enums.TransportType;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -9,7 +11,7 @@ public class Subscription extends Rate {
     // ATTRIBUTES
 
     private long id;
-    private SubType type;
+    private TransportType.SubType type;
     private LocalDate startingDate;
     private LocalDate endingDate;
     private long duration;
@@ -17,10 +19,10 @@ public class Subscription extends Rate {
 
     // CONSTRUCTORS
 
-public Subscription(){
+    public Subscription(){
 
-}
-    public Subscription(double price, SubType type ) {
+    }
+    public Subscription(double price, TransportType.SubType type ) {
         super(price);
         this.type = type;
         setStartingDate();
@@ -31,11 +33,11 @@ public Subscription(){
     // METHODS
 
 
-    public SubType getType() {
+    public TransportType.SubType getType() {
         return type;
     }
 
-    public void setType(SubType type) {
+    public void setType(TransportType.SubType type) {
         this.type = type;
     }
 
@@ -45,7 +47,7 @@ public Subscription(){
 
     public void setStartingDate() {
         Random random = new Random();
-        if ( this.type == SubType.WEEKLY) {
+        if ( this.type == TransportType.SubType.WEEKLY) {
 
             this.startingDate = LocalDate.of(2024, random.nextInt(1,7), random.nextInt(1,29));
         } else {
@@ -58,7 +60,7 @@ public Subscription(){
     }
 
     public void setEndingDate() {
-        if ( this.type == SubType.WEEKLY) {
+        if ( this.type == TransportType.SubType.WEEKLY) {
 
             this.endingDate = this.startingDate.plusDays(7) ;
         } else { this.endingDate = this.startingDate.plusMonths(1).minusDays(1);

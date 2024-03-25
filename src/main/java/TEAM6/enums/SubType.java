@@ -1,4 +1,4 @@
-package TEAM6;
+package TEAM6.enums;
 
 import java.util.Random;
 

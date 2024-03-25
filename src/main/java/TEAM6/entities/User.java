@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class User {
     // ATTRIBUTES
     private long id;
-    private int cardFk;
+    private int card;
     private LocalDate cardStartDate;
     private LocalDate cardEndDate;
     private String name;
@@ -15,8 +15,8 @@ public class User {
     private String email;
 
     // CONSTRUCTORS
-    public User(int cardFk, LocalDate cardStartDate, LocalDate cardEndDate, String name, String surname, LocalDate birthDate, String phoneNumber, String email) {
-        this.cardFk = cardFk;
+    public User(int card, LocalDate cardStartDate, LocalDate cardEndDate, String name, String surname, LocalDate birthDate, String phoneNumber, String email) {
+        this.card = card;
         this.cardStartDate = cardStartDate;
         this.cardEndDate = cardEndDate;
         this.name = name;
@@ -32,7 +32,7 @@ public class User {
     }
 
     public int getCardFk() {
-        return cardFk;
+        return card;
     }
 
     public LocalDate getCardStartDate() {
@@ -63,8 +63,8 @@ public class User {
         return email;
     }
 
-    public void setCardFk(int cardFk) {
-        this.cardFk = cardFk;
+    public void setCardFk(int card) {
+        this.card = card;
     }
 
     public void setCardStartDate(LocalDate cardStartDate) {

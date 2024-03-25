@@ -10,8 +10,6 @@ import java.util.Random;
 public class Subscription extends Rate {
 
     // ATTRIBUTES
-
-    private long id;
     private SubType type;
     private LocalDate startingDate;
     private LocalDate endingDate;

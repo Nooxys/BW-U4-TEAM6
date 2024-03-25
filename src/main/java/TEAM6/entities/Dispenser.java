@@ -6,12 +6,19 @@ import jakarta.persistence.Table;
 //@Entity
 //@Table(name = "dispenser")
 public class Dispenser extends Stores{
+
+//    ATTRIBUTES
     private boolean status;
+
+//    CONSTRUCTORS
     public Dispenser(String location, boolean status) {
         super(location);
         this.status = status;
     }
 
+    public Dispenser(){}
+
+//    GETTERS AND SETTERS
     public boolean getStatus() {
         return status;
     }
@@ -20,6 +27,7 @@ public class Dispenser extends Stores{
         this.status = status;
     }
 
+//    TO STRING
     @Override
     public String toString() {
         return "Dispenser{" +

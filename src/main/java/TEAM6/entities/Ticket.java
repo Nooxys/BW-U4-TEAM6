@@ -3,7 +3,6 @@ package TEAM6.entities;
 public class Ticket extends Rate {
 
     // ATTRIBUTES
-    private long id;
     private boolean isUsed;
 
     // CONSTRUCTOR

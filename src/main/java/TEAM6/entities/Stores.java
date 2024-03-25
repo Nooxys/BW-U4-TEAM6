@@ -10,15 +10,20 @@ import java.util.Random;
 //@Table(name = "stores")
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Stores {
+    //    ATTRIBUTES
 //    @Id
 //    @GeneratedValue
     protected long id;
     protected String location;
 
+    //    CONSTRUCTORS
     public Stores(String location) {
         this.location = location;
     }
 
+    public Stores() {}
+
+    //    GETTERS AND SETTERS
     public long getId() {
         return id;
     }
@@ -31,6 +36,7 @@ public abstract class Stores {
         this.location = location;
     }
 
+    //    TO STRING
     @Override
     public String toString() {
         return "Stores{" +

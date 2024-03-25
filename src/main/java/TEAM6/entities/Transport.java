@@ -35,6 +35,10 @@ public class Transport {
         setUnderMaintenanceTime();
     }
 
+    public Transport() {
+
+    }
+
     //    GETTERS AND SETTERS
     public TransportType getTransportType() {
         return transportType;

@@ -1,6 +1,7 @@
 package TEAM6.entities;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 public class User {
     // ATTRIBUTES
@@ -15,10 +16,10 @@ public class User {
     private String email;
 
     // CONSTRUCTORS
-    public User(int card, LocalDate cardStartDate, LocalDate cardEndDate, String name, String surname, LocalDate birthDate, String phoneNumber, String email) {
+    public User(int card, String name, String surname, LocalDate birthDate, String phoneNumber, String email) {
         this.card = card;
-        this.cardStartDate = cardStartDate;
-        this.cardEndDate = cardEndDate;
+        setCardStartDate();
+        setCardEndDate();
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
@@ -67,12 +68,13 @@ public class User {
         this.card = card;
     }
 
-    public void setCardStartDate(LocalDate cardStartDate) {
-        this.cardStartDate = cardStartDate;
+    public void setCardStartDate() {
+        Random random = new Random();
+        this.cardStartDate = LocalDate.of(2024, random.nextInt(1, 4), random.nextInt(1, 29));
     }
 
-    public void setCardEndDate(LocalDate cardEndDate) {
-        this.cardEndDate = cardEndDate;
+    public void setCardEndDate() {
+        this.cardEndDate = this.cardStartDate.plusYears(1);
     }
 
     public void setName(String name) {

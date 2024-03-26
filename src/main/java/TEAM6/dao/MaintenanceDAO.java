@@ -2,6 +2,7 @@ package TEAM6.dao;
 
 import TEAM6.entities.Maintenance;
 import TEAM6.exceptions.NoFoundException;
+import TEAM6.exceptions.NoMaintenanceException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -20,7 +21,7 @@ public class MaintenanceDAO {
             em.persist(maintenance);
             t.commit();
             System.out.println("Maintenance " + maintenance.getId() + " - has been created!");
-        } catch (NoFoundException e) {
+        } catch (NoMaintenanceException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -43,7 +44,7 @@ public class MaintenanceDAO {
             } else System.out.println("Maintenance not found");
 
 
-        } catch (NoFoundException e) {
+        } catch (NoMaintenanceException e) {
             System.out.println(e.getMessage());
         }
     }

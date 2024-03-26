@@ -76,9 +76,9 @@ Random random = new Random();
 //        RATE GENERATOR
         for (int i = 0; i < 30; i++) {
             if (random.nextInt(1, 3) == 1){
-                ratesDAO.save(new Subscription(random.nextDouble(5, 21), storesDAO.findById(random.nextInt(1, 21)), userDAO.findById(random.nextInt(1, 21)), random.nextInt(1, 3) == 1 ? SubType.WEEKLY : SubType.MONTHLY));
+                ratesDAO.save(new Subscription(storesDAO.findById(random.nextInt(1, 21)), userDAO.findById(random.nextInt(1, 21)), random.nextInt(1, 3) == 1 ? SubType.WEEKLY : SubType.MONTHLY));
             } else {
-                ratesDAO.save(new Ticket(random.nextDouble(5, 21), storesDAO.findById(random.nextInt(1, 21)), userDAO.findById(random.nextInt(1, 21)), random.nextInt(1, 3) == 1, transportDAO.findById(random.nextInt(1, 21))));
+                ratesDAO.save(new Ticket(storesDAO.findById(random.nextInt(1, 21)), userDAO.findById(random.nextInt(1, 21)), random.nextInt(1, 3) == 1, transportDAO.findById(random.nextInt(1, 21))));
             }
         }
 

@@ -27,8 +27,8 @@ public abstract class Rate {
     public Rate(){
 
     }
-    public Rate(double price, Store store,User user) {
-        this.price = price;
+    public Rate(Store store,User user) {
+        setPrice();
         this.store = store;
         this.user = user;
     }
@@ -46,6 +46,8 @@ public abstract class Rate {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public abstract void setPrice();
 
     @Override
     public String toString() {

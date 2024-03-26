@@ -28,9 +28,10 @@ public class Subscription extends Rate {
 
     }
 
-    public Subscription(double price, Store store, User user, SubType type) {
-        super(price, store, user);
+    public Subscription(Store store, User user, SubType type) {
+        super(store, user);
         this.type = type;
+        setPrice();
         setStartingDate();
         setEndingDate();
         setDuration();
@@ -79,6 +80,15 @@ public class Subscription extends Rate {
 
     public void setDuration() {
         this.duration = ChronoUnit.DAYS.between(this.startingDate, this.endingDate);
+    }
+
+    @Override
+    public void setPrice(){
+        if (this.type == SubType.MONTHLY) {
+            this.price = 39.90;
+        } else {
+            this.price = 12.90;
+        }
     }
 
     @Override

@@ -1,16 +1,19 @@
 package TEAM6.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 import java.time.LocalTime;
 
-//@Entity
-//@Table(name = "resellers")
+@Entity
+@Table(name = "resellers")
 public class Reseller extends Store{
 
 //    ATTRIBUTES
+    @Column(name = "opening_time")
     private LocalTime openingTime;
+    @Column(name = "closing_time")
     private LocalTime closingTime;
 
 //    CONSTRUCTORS

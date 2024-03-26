@@ -113,7 +113,15 @@ public class User {
         this.email = email;
     }
 
-//    TO STRING
+    public List<Rate> getRateList() {
+        return rateList;
+    }
+
+    public void setRateList(List<Rate> rateList) {
+        this.rateList = rateList;
+    }
+
+    //    TO STRING
     @Override
     public String toString() {
         return "User{" +

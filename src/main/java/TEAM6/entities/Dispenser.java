@@ -3,8 +3,8 @@ package TEAM6.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-//@Entity
-//@Table(name = "dispenser")
+@Entity
+@Table(name = "dispenser")
 public class Dispenser extends Store{
 
 //    ATTRIBUTES

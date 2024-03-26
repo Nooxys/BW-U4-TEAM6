@@ -25,23 +25,13 @@ public class Transport {
     @Enumerated(EnumType.STRING)
     @Column(name = "transport_status")
     private TransportStatus transportStatus;
-    @Column(name = "on_service_start")
-    private LocalDate onServiceStart;
-    @Column(name = "on_service_end")
-    private LocalDate onServiceEnd;
-    @Column(name = "on_service_days")
-    private long onServiceDays;
-    @Column(name = "under_maintenance_start")
-    private LocalDate underMaintenanceStart;
-    @Column(name = "under_maintenance_end")
-    private LocalDate underMaintenanceEnd;
-    @Column(name = "under_maintenance_days")
-    private long underMaintenanceDays;
     @ManyToOne
     @JoinColumn(name = "route_id")
     private Route route;
     @OneToMany(mappedBy = "transport")
     private List<Ticket> ticketList;
+    @OneToMany(mappedBy = "transport")
+    private List<Maintenance> maintenanceList;
 
     //    CONSTRUCTORS
     public Transport(TransportType transportType, String model, TransportStatus transportStatus, Route route) {
@@ -49,12 +39,6 @@ public class Transport {
         setCapacity();
         this.model = model;
         this.transportStatus = transportStatus;
-        setOnServiceStart();
-        setOnServiceEnd();
-        setOnServiceTime();
-        setUnderMaintenanceStart();
-        setUnderMaintenanceEnd();
-        setUnderMaintenanceTime();
         this.route = route;
     }
 
@@ -101,76 +85,20 @@ public class Transport {
         this.transportStatus = transportStatus;
     }
 
-    public LocalDate getOnServiceStart() {
-        return onServiceStart;
-    }
-
-    public void setOnServiceStart() {
-        if (this.transportStatus == TransportStatus.ON_SERVICE) {
-            Random random = new Random();
-            this.onServiceStart = LocalDate.of(2024, random.nextInt(1, 7), random.nextInt(1, 29));
-        } else this.onServiceStart = null;
-    }
-
-    public LocalDate getOnServiceEnd() {
-        return onServiceEnd;
-    }
-
-    public void setOnServiceEnd() {
-        if (this.transportStatus == TransportStatus.ON_SERVICE) {
-            Random random = new Random();
-            this.onServiceEnd = this.onServiceStart.plusDays(random.nextInt(120, 180));
-        } else this.onServiceEnd = null;
-    }
-
-    public long getOnServiceTime() {
-        return onServiceDays;
-    }
-
-    public void setOnServiceTime() {
-        if(this.transportStatus == TransportStatus.ON_SERVICE) {
-            this.onServiceDays = ChronoUnit.DAYS.between(this.onServiceStart, this.onServiceEnd);
-        } else this.onServiceDays = 0;
-    }
-
-    public LocalDate getUnderMaintenanceStart() {
-        return underMaintenanceStart;
-    }
-
-    public void setUnderMaintenanceStart() {
-        if (this.transportStatus == TransportStatus.UNDER_MAINTENANCE) {
-            Random random = new Random();
-            this.underMaintenanceStart = LocalDate.of(2024, random.nextInt(1, 7), random.nextInt(1, 29));
-        } else this.underMaintenanceStart = null;
-    }
-
-    public LocalDate getUnderMaintenanceEnd() {
-        return underMaintenanceEnd;
-    }
-
-    public void setUnderMaintenanceEnd() {
-        if (this.transportStatus == TransportStatus.UNDER_MAINTENANCE) {
-            Random random = new Random();
-            this.underMaintenanceEnd = this.underMaintenanceStart.plusDays(random.nextInt(15, 31));
-        } else this.underMaintenanceEnd = null;
-    }
-
-    public long getUnderMaintenanceTime() {
-        return underMaintenanceDays;
-    }
-
-    public void setUnderMaintenanceTime() {
-        if(this.transportStatus == TransportStatus.UNDER_MAINTENANCE) {
-            this.underMaintenanceDays = ChronoUnit.DAYS.between(this.underMaintenanceStart, this.underMaintenanceEnd);
-        } else this.underMaintenanceDays = 0;
-    }
-
     public List<Ticket> getTicketList() {
         return ticketList;
     }
 
     public void setTicketList(List<Ticket> ticketList) {
         this.ticketList = ticketList;
+    }
+
+    public List<Maintenance> getMaintenanceList() {
+        return maintenanceList;
+    }
+
+    public void setMaintenanceList(List<Maintenance> maintenanceList) {
+        this.maintenanceList = maintenanceList;
     }
 
     //    TO STRING
@@ -182,12 +110,6 @@ public class Transport {
                 ", capacity=" + capacity +
                 ", model='" + model + '\'' +
                 ", transportStatus=" + transportStatus +
-                ", onServiceStart=" + onServiceStart +
-                ", onServiceEnd=" + onServiceEnd +
-                ", onServiceDays=" + onServiceDays +
-                ", underMaintenanceStart=" + underMaintenanceStart +
-                ", underMaintenanceEnd=" + underMaintenanceEnd +
-                ", underMaintenanceDays=" + underMaintenanceDays +
                 ", route=" + route +
                 '}';
     }

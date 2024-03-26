@@ -1,0 +1,5 @@
+package TEAM6.enums;
+
+public enum MaintenanceType {
+    ENGINE_PROBLEM, ROUTINE_CHECK_UP, SANITATION, TIRES_CHANGE, GENERIC_PROBLEM
+}

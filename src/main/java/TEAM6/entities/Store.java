@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "stores")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "store_type")
 public abstract class Store {
 
     //    ATTRIBUTES

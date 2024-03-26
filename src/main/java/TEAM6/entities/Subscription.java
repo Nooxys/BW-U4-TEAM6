@@ -1,10 +1,8 @@
 package TEAM6.entities;
 
 import TEAM6.enums.SubType;
-import TEAM6.enums.TransportType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -23,13 +21,15 @@ public class Subscription extends Rate {
     private long duration;
 
 
+
+
     // CONSTRUCTORS
 
     public Subscription(){
 
     }
-    public Subscription(double price, SubType type ) {
-        super(price);
+    public Subscription(double price,Store store, SubType type ) {
+        super(price,store);
         this.type = type;
         setStartingDate();
         setEndingDate();

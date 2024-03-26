@@ -1,20 +1,24 @@
 package TEAM6.entities;
 
-import TEAM6.enums.TransportType;
+import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.Random;
+import java.util.List;
 
-//@Entity
-//@Table(name = "stores")
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+
+@Entity
+@Table(name = "stores")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Store {
+
     //    ATTRIBUTES
-//    @Id
-//    @GeneratedValue
+    @Id
+    @GeneratedValue
     protected long id;
     protected String location;
+
+    @OneToMany(mappedBy = "store")
+    protected List<Rate> rateList;
+
 
     //    CONSTRUCTORS
     public Store(String location) {

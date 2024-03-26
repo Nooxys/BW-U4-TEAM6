@@ -13,12 +13,17 @@ public abstract class Rate {
     protected  long id;
     protected double price;
 
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    protected Store store;
+
     // CONSTRUCTORS
     public Rate(){
 
     }
-    public Rate(double price) {
+    public Rate(double price, Store store) {
         this.price = price;
+        this.store = store;
     }
 
     // METHODS

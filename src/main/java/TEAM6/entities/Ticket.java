@@ -16,8 +16,8 @@ public class Ticket extends Rate {
 
     public Ticket(){
     }
-    public Ticket( double price, boolean isUsed) {
-        super( price);
+    public Ticket( double price,Store store, boolean isUsed) {
+        super( price,store);
         this.isUsed = isUsed;
     }
 

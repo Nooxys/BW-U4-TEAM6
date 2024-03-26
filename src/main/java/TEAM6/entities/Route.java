@@ -1,19 +1,25 @@
 package TEAM6.entities;
 
-//@Table(name = "routes")
-public class Route {
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
+@Table(name = "routes")
+public class Route {
 //    ATTRIBUTES
-        //@Id
-        //@GeneratedValue
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
         private String deploy;
+        @Column(name = "last_stop")
         private String lastStop;
+        @Column(name = "average_time")
         private double averageTime;
-
+        @OneToMany(mappedBy = "route")
+        private List<Transport> transportList;
 
 //        CONSTRUCTORS
-
     public Route() {
 
     }
@@ -24,14 +30,10 @@ public class Route {
 
         }
 
-
-
 //    GETTERS AND SETTERS
-
     public long getId() {
         return id;
     }
-
 
     public String getDeploy() {
         return deploy;
@@ -57,10 +59,15 @@ public class Route {
         this.averageTime = averageTime;
     }
 
+    public List<Transport> getTransportList() {
+        return transportList;
+    }
 
-//        TO STRING
+    public void setTransportList(List<Transport> transportList) {
+        this.transportList = transportList;
+    }
 
-
+    //        TO STRING
     @Override
     public String toString() {
         return "Route{" +

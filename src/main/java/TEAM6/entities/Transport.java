@@ -2,27 +2,44 @@ package TEAM6.entities;
 
 import TEAM6.enums.TransportStatus;
 import TEAM6.enums.TransportType;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Random;
 
+@Entity
+@Table(name = "transports")
 public class Transport {
 
     //    ATTRIBUTES
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Column(name = "transport_type")
     private TransportType transportType;
     private int capacity;
     private String model;
+    @Column(name = "transport_status")
     private TransportStatus transportStatus;
+    @Column(name = "on_service_start")
     private LocalDate onServiceStart;
+    @Column(name = "on_service_end")
     private LocalDate onServiceEnd;
+    @Column(name = "on_service_days")
     private long onServiceDays;
+    @Column(name = "under_maintenance_start")
     private LocalDate underMaintenanceStart;
+    @Column(name = "under_maintenance_end")
     private LocalDate underMaintenanceEnd;
+    @Column(name = "under_maintenance_days")
     private long underMaintenanceDays;
+    @ManyToOne
+    @JoinColumn(name = "route_id")
+    private Route route;
 
     //    CONSTRUCTORS
-    public Transport(TransportType transportType, String model, TransportStatus transportStatus) {
+    public Transport(TransportType transportType, String model, TransportStatus transportStatus, Route route) {
         this.transportType = transportType;
         setCapacity();
         this.model = model;
@@ -33,6 +50,7 @@ public class Transport {
         setUnderMaintenanceStart();
         setUnderMaintenanceEnd();
         setUnderMaintenanceTime();
+        this.route = route;
     }
 
     public Transport() {
@@ -40,6 +58,10 @@ public class Transport {
     }
 
     //    GETTERS AND SETTERS
+    public long getId() {
+        return id;
+    }
+
     public TransportType getTransportType() {
         return transportType;
     }
@@ -142,7 +164,8 @@ public class Transport {
     @Override
     public String toString() {
         return "Transport{" +
-                "transportType=" + transportType +
+                "id=" + id +
+                ", transportType=" + transportType +
                 ", capacity=" + capacity +
                 ", model='" + model + '\'' +
                 ", transportStatus=" + transportStatus +
@@ -152,6 +175,7 @@ public class Transport {
                 ", underMaintenanceStart=" + underMaintenanceStart +
                 ", underMaintenanceEnd=" + underMaintenanceEnd +
                 ", underMaintenanceDays=" + underMaintenanceDays +
+                ", route=" + route +
                 '}';
     }
 }

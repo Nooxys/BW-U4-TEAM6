@@ -28,12 +28,13 @@ public class Subscription extends Rate {
     public Subscription(){
 
     }
-    public Subscription(double price, SubType type ) {
-        super(price);
+
+    public Subscription(double price, User user, SubType type, LocalDate startingDate, LocalDate endingDate, long duration) {
+        super(price, user);
         this.type = type;
-        setStartingDate();
-        setEndingDate();
-        setDuration();
+        this.startingDate = startingDate;
+        this.endingDate = endingDate;
+        this.duration = duration;
     }
 
     // METHODS

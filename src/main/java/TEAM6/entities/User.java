@@ -3,6 +3,7 @@ package TEAM6.entities;
 import java.time.LocalDate;
 
 public class User {
+
     // ATTRIBUTES
     private long id;
     private int card;

@@ -30,6 +30,8 @@ public class Ticket extends Rate {
         isUsed = used;
     }
 
+
+
     @Override
     public String toString() {
         return "Ticket{" +

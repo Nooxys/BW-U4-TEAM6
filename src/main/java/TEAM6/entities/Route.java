@@ -2,70 +2,72 @@ package TEAM6.entities;
 
 //@Table(name = "routes")
 public class Route {
+
 //    ATTRIBUTES
         //@Id
         //@GeneratedValue
         private long id;
-        private char partenza;
-        private char capolinea;
-        private int tempoMedioDiPercorrenza;
-        private int mezzo;
+        private String deploy;
+        private String lastStop;
+        private double averageTime;
+
 
 //        CONSTRUCTORS
-        public Route(char partenza, char capolinea, int tempoMedioDiPercorrenza, int mezzo) {
-            this.partenza = partenza;
-            this.capolinea = capolinea;
-            this.tempoMedioDiPercorrenza = tempoMedioDiPercorrenza;
-            this.mezzo = mezzo;
+
+    public Route() {
+
+    }
+        public Route(String deploy, String lastStop, double averageTime) {
+            this.deploy = deploy;
+            this.lastStop =lastStop;
+            this.averageTime = averageTime;
+
         }
 
-        public Route() {}
+
 
 //    GETTERS AND SETTERS
-        public long getId() {
-            return id;
-        }
-        public char getPartenza() {
-            return partenza;
-        }
 
-        public void setPartenza(char partenza) {
-            this.partenza = partenza;
-        }
+    public long getId() {
+        return id;
+    }
 
-        public char getCapolinea() {
-            return capolinea;
-        }
 
-        public void setCapolinea(char capolinea) {
-            this.capolinea = capolinea;
-        }
+    public String getDeploy() {
+        return deploy;
+    }
 
-        public int getTempoMedioDiPercorrenza() {
-            return tempoMedioDiPercorrenza;
-        }
+    public void setDeploy(String deploy) {
+        this.deploy = deploy;
+    }
 
-        public void setTempoMedioDiPercorrenza(int tempoMedioDiPercorrenza) {
-            this.tempoMedioDiPercorrenza = tempoMedioDiPercorrenza;
-        }
+    public String getLastStop() {
+        return lastStop;
+    }
 
-        public int getMezzo() {
-            return mezzo;
-        }
+    public void setLastStop(String lastStop) {
+        this.lastStop = lastStop;
+    }
 
-        public void setMezzo(int mezzo) {
-            this.mezzo = mezzo;
-        }
+    public double getAverageTime() {
+        return averageTime;
+    }
+
+    public void setAverageTime(double averageTime) {
+        this.averageTime = averageTime;
+    }
+
 
 //        TO STRING
-        @Override
-        public String toString() {
-            return "Route{" +
-                    "id=" + id +
-                    ", partenza=" + partenza +
-                    ", capolinea=" + capolinea +
-                    ", tempoMedioDiPercorrenza=" + tempoMedioDiPercorrenza +
-                    ", mezzo=" + mezzo +
-                    '}';
-        }
+
+
+    @Override
+    public String toString() {
+        return "Route{" +
+                "id=" + id +
+                ", deploy='" + deploy + '\'' +
+                ", lastStop='" + lastStop + '\'' +
+                ", averageTime=" + averageTime +
+                '}';
+    }
 }

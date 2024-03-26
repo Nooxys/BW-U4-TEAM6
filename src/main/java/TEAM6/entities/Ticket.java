@@ -1,8 +1,15 @@
 package TEAM6.entities;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tickets")
 public class Ticket extends Rate {
 
     // ATTRIBUTES
+    @Column(name = "is_used")
     private boolean isUsed;
 
     // CONSTRUCTOR

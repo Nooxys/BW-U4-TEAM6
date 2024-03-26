@@ -2,16 +2,23 @@ package TEAM6.entities;
 
 import TEAM6.enums.SubType;
 import TEAM6.enums.TransportType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Random;
 
+@Entity
+@Table(name = "subscriptions")
 public class Subscription extends Rate {
 
     // ATTRIBUTES
     private SubType type;
+    @Column(name = "starting_date")
     private LocalDate startingDate;
+    @Column(name = "ending_date")
     private LocalDate endingDate;
     private long duration;
 

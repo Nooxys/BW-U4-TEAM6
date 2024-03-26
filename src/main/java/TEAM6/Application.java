@@ -41,19 +41,23 @@ Random random = new Random();
 
         Faker faker = new Faker(Locale.ITALY);
 
-        for (int i = 0; i < 5; i++) {
-           routeDAO.save(new Route(faker.address().cityName(), faker.address().cityName(), random.nextInt(15, 30)));
-        }
+//        for (int i = 0; i < 5; i++) {
+//           routeDAO.save(new Route(faker.address().cityName(), faker.address().cityName(), random.nextInt(15, 30)));
+//        }
+//
+//        for (int i = 0; i < 20; i++) {
+//            List<TransportType> transportTypeList = new ArrayList<>();
+//            transportTypeList.add(TransportType.BUS);
+//            transportTypeList.add(TransportType.TRAM);
+//            List<TransportStatus> transportStatusList = new ArrayList<>();
+//            transportStatusList.add(TransportStatus.ON_SERVICE);
+//            transportStatusList.add(TransportStatus.UNDER_MAINTENANCE);
+//            transportDAO.save(new Transport(transportTypeList.get(random.nextInt(0,2)), faker.space().galaxy(), transportStatusList.get(random.nextInt(0, 2)), routeDAO.findById(random.nextInt(1, 5))));
+//        }
 
-        for (int i = 0; i < 20; i++) {
-            List<TransportType> transportTypeList = new ArrayList<>();
-            transportTypeList.add(TransportType.BUS);
-            transportTypeList.add(TransportType.TRAM);
-            List<TransportStatus> transportStatusList = new ArrayList<>();
-            transportStatusList.add(TransportStatus.ON_SERVICE);
-            transportStatusList.add(TransportStatus.UNDER_MAINTENANCE);
-            transportDAO.save(new Transport(transportTypeList.get(random.nextInt(0,2)), faker.space().galaxy(), transportStatusList.get(random.nextInt(0, 2)), routeDAO.findById(random.nextInt(1, 5))));
-        }
+        routeDAO.findById(4).getTransportList().forEach(System.out::println);
+
+
 
         em.close();
         emf.close();

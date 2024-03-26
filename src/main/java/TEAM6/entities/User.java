@@ -1,5 +1,8 @@
 package TEAM6.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Inheritance;
+
 import java.time.LocalDate;
 import java.util.Random;
 

@@ -1,8 +1,15 @@
 package TEAM6.entities;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "rates")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Rate {
 
     // ATTRIBUTES
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected  long id;
     protected double price;
 

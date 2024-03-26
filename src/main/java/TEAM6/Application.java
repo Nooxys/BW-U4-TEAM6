@@ -33,7 +33,7 @@ Random random = new Random();
         MaintenanceDAO maintenanceDAO = new MaintenanceDAO(em);
 
 
-//        CIRO PROVA SUBSCRIPTIONS
+//        PROVA SUBSCRIPTIONS
 //        List<Subscription> subscriptionList = new ArrayList<>();
 //        for (int i = 0; i <20 ; i++) {
 //            Subscription prova = new Subscription(5.99, SubType.randomSubType());

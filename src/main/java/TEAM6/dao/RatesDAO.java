@@ -2,6 +2,7 @@ package TEAM6.dao;
 
 import TEAM6.entities.Rate;
 import TEAM6.exceptions.NoFoundException;
+import TEAM6.exceptions.NoRateException;
 import jakarta.persistence.*;
 
 public class RatesDAO {
@@ -20,7 +21,7 @@ public class RatesDAO {
             em.persist(rate);
             t.commit();
             System.out.println("Rate " + rate.getId() + " - created!");
-        } catch (NoFoundException e) {
+        } catch (NoRateException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -43,10 +44,9 @@ public class RatesDAO {
             } else System.out.println("Rate not found");
 
 
-        } catch (NoFoundException e) {
+        } catch (NoRateException e) {
             System.out.println(e.getMessage());
         }
     }
-
 
 }

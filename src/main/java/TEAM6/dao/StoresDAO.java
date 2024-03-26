@@ -3,6 +3,7 @@ package TEAM6.dao;
 import TEAM6.entities.Store;
 
 import TEAM6.exceptions.NoFoundException;
+import TEAM6.exceptions.NoStoreException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -24,7 +25,7 @@ public class StoresDAO {
             em.persist(store);
             t.commit();
             System.out.println("Store " + store.getId() + " - created!");
-        } catch (NoFoundException e) {
+        } catch (NoStoreException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -47,7 +48,7 @@ public class StoresDAO {
             } else System.out.println("Store not found");
 
 
-        } catch (NoFoundException e) {
+        } catch (NoStoreException e) {
             System.out.println(e.getMessage());
         }
     }

@@ -5,6 +5,7 @@ package TEAM6.dao;
 
 import TEAM6.entities.Transport;
 import TEAM6.exceptions.NoFoundException;
+import TEAM6.exceptions.NoTransportException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -23,7 +24,7 @@ public class TransportDAO {
             em.persist(transport);
             t.commit();
             System.out.println("The transport " + transport.getId() + " - has been created!");
-        } catch (NoFoundException e) {
+        } catch (NoTransportException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -46,7 +47,7 @@ public class TransportDAO {
             } else System.out.println("Transport not found");
 
 
-        } catch (NoFoundException e) {
+        } catch (NoTransportException e) {
             System.out.println(e.getMessage());
         }
     }

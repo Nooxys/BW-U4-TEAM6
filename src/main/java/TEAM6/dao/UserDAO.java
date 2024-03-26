@@ -3,6 +3,7 @@ package TEAM6.dao;
 
 import TEAM6.entities.User;
 import TEAM6.exceptions.NoFoundException;
+import TEAM6.exceptions.NoUserException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -22,7 +23,7 @@ public class UserDAO {
             em.persist(user);
             t.commit();
             System.out.println("User " + user.getName() + " - has been created!");
-        } catch (NoFoundException e) {
+        } catch (NoUserException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -45,7 +46,7 @@ public class UserDAO {
             } else System.out.println("User not found");
 
 
-        } catch (NoFoundException e) {
+        } catch (NoUserException e) {
             System.out.println(e.getMessage());
         }
     }

@@ -34,7 +34,7 @@ Random random = new Random();
         UserDAO userDAO = new UserDAO(em);
 
 
-//        CIRO PROVA SUBSCRIPTIONS
+//        PROVA SUBSCRIPTIONS
 //        List<Subscription> subscriptionList = new ArrayList<>();
 //        for (int i = 0; i <20 ; i++) {
 //            Subscription prova = new Subscription(5.99, SubType.randomSubType());
@@ -46,20 +46,20 @@ Random random = new Random();
         Faker faker = new Faker(Locale.ITALY);
 
 //        ROUTE GENERATOR
-//        for (int i = 0; i < 5; i++) {
-//           routeDAO.save(new Route(faker.address().cityName(), faker.address().cityName(), random.nextInt(15, 30)));
-//        }
+        for (int i = 0; i < 5; i++) {
+           routeDAO.save(new Route(faker.address().cityName(), faker.address().cityName(), random.nextInt(15, 30)));
+        }
 
 //       TRANSPORT GENERATOR
-//        for (int i = 0; i < 20; i++) {
-//            List<TransportType> transportTypeList = new ArrayList<>();
-//            transportTypeList.add(TransportType.BUS);
-//            transportTypeList.add(TransportType.TRAM);
-//            List<TransportStatus> transportStatusList = new ArrayList<>();
-//            transportStatusList.add(TransportStatus.ON_SERVICE);
-//            transportStatusList.add(TransportStatus.UNDER_MAINTENANCE);
-//            transportDAO.save(new Transport(transportTypeList.get(random.nextInt(0,2)), faker.space().galaxy(), transportStatusList.get(random.nextInt(0, 2)), routeDAO.findById(random.nextInt(1, 5))));
-//        }
+        for (int i = 0; i < 20; i++) {
+            List<TransportType> transportTypeList = new ArrayList<>();
+            transportTypeList.add(TransportType.BUS);
+            transportTypeList.add(TransportType.TRAM);
+            List<TransportStatus> transportStatusList = new ArrayList<>();
+            transportStatusList.add(TransportStatus.ON_SERVICE);
+            transportStatusList.add(TransportStatus.UNDER_MAINTENANCE);
+            transportDAO.save(new Transport(transportTypeList.get(random.nextInt(0,2)), faker.space().galaxy(), transportStatusList.get(random.nextInt(0, 2)), routeDAO.findById(random.nextInt(1, 5))));
+        }
 
 //        USER GENERATOR
 //        for (int i = 0; i < 30; i++) {

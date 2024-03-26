@@ -122,6 +122,7 @@ public class User {
     }
 
     //    TO STRING
+
     @Override
     public String toString() {
         return "User{" +
@@ -132,8 +133,9 @@ public class User {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", birthDate=" + birthDate +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", phoneNumber=" + phoneNumber +
                 ", email='" + email + '\'' +
+                ", rateList=" + rateList +
                 '}';
     }
 }

@@ -9,7 +9,7 @@ import java.util.Random;
 //@Entity
 //@Table(name = "stores")
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Stores {
+public abstract class Store {
     //    ATTRIBUTES
 //    @Id
 //    @GeneratedValue
@@ -17,11 +17,11 @@ public abstract class Stores {
     protected String location;
 
     //    CONSTRUCTORS
-    public Stores(String location) {
+    public Store(String location) {
         this.location = location;
     }
 
-    public Stores() {}
+    public Store() {}
 
     //    GETTERS AND SETTERS
     public long getId() {

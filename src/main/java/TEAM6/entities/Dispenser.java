@@ -5,7 +5,7 @@ import jakarta.persistence.Table;
 
 //@Entity
 //@Table(name = "dispenser")
-public class Dispenser extends Stores{
+public class Dispenser extends Store{
 
 //    ATTRIBUTES
     private boolean status;

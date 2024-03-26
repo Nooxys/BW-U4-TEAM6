@@ -9,7 +9,6 @@ import com.github.javafaker.Faker;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -82,7 +81,6 @@ Random random = new Random();
             }
         }
 
-//       storesDAO.findById(20).getRateList().forEach(System.out::println);
 
         em.close();
         emf.close();

@@ -23,7 +23,6 @@ public class Subscription extends Rate {
 
 
     // CONSTRUCTORS
-
     public Subscription(){
 
     }
@@ -38,8 +37,6 @@ public class Subscription extends Rate {
     }
 
 // METHODS
-
-
     public SubType getType() {
         return type;
     }

@@ -24,13 +24,13 @@ public class User {
     @Column(name = "birth_date")
     private LocalDate birthDate;
     @Column(name = "phone_number")
-    private int phoneNumber;
+    private String phoneNumber;
     private String email;
     @OneToMany(mappedBy = "user")
     private List<Rate> rateList;
 
     // CONSTRUCTORS
-    public User(int card, String name, String surname, LocalDate birthDate, int phoneNumber, String email) {
+    public User(int card, String name, String surname, LocalDate birthDate, String phoneNumber, String email) {
         this.card = card;
         setCardStartDate();
         setCardEndDate();
@@ -72,7 +72,7 @@ public class User {
         return birthDate;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -105,7 +105,7 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

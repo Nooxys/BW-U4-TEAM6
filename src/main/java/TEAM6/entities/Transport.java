@@ -17,10 +17,12 @@ public class Transport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Enumerated(EnumType.STRING)
     @Column(name = "transport_type")
     private TransportType transportType;
     private int capacity;
     private String model;
+    @Enumerated(EnumType.STRING)
     @Column(name = "transport_status")
     private TransportStatus transportStatus;
     @Column(name = "on_service_start")

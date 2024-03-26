@@ -13,6 +13,7 @@ import java.util.Random;
 public class Subscription extends Rate {
 
     // ATTRIBUTES
+    @Enumerated(EnumType.STRING)
     private SubType type;
     @Column(name = "starting_date")
     private LocalDate startingDate;

@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "rates")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Rate {
 
     // ATTRIBUTES
@@ -18,7 +18,9 @@ public abstract class Rate {
     @ManyToOne
     @JoinColumn(name = "store_id")
     protected Store store;
-    @JoinColumn(name = "rate_id")
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     protected User user;
 
     // CONSTRUCTORS

@@ -21,23 +21,21 @@ public class Subscription extends Rate {
     private long duration;
 
 
-
-
     // CONSTRUCTORS
 
     public Subscription(){
 
     }
 
-    public Subscription(double price, User user,Store store, SubType type, LocalDate startingDate, LocalDate endingDate, long duration) {
-        super(price, user,store);
+    public Subscription(double price, Store store, User user, SubType type) {
+        super(price, store, user);
         this.type = type;
-        this.startingDate = startingDate;
-        this.endingDate = endingDate;
-        this.duration = duration;
+        setStartingDate();
+        setEndingDate();
+        setDuration();
     }
 
-    // METHODS
+// METHODS
 
 
     public SubType getType() {
@@ -85,13 +83,14 @@ public class Subscription extends Rate {
     @Override
     public String toString() {
         return "Subscription{" +
-                "id=" + id +
-                ", type=" + type +
+                "type=" + type +
                 ", startingDate=" + startingDate +
                 ", endingDate=" + endingDate +
                 ", duration=" + duration +
                 ", id=" + id +
                 ", price=" + price +
+                ", store=" + store +
+                ", user=" + user +
                 '}';
     }
 }

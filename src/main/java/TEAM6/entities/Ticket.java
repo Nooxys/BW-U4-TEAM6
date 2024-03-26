@@ -18,8 +18,8 @@ public class Ticket extends Rate {
     public Ticket(){
     }
 
-    public Ticket(double price, User user,Store store, boolean isUsed, Transport transport) {
-        super(price, user,store);
+    public Ticket(double price, Store store, User user, boolean isUsed, Transport transport) {
+        super(price, store, user);
         this.isUsed = isUsed;
         this.transport = transport;
     }
@@ -55,6 +55,8 @@ public class Ticket extends Rate {
                 ", transport=" + transport +
                 ", id=" + id +
                 ", price=" + price +
+                ", store=" + store +
+                ", user=" + user +
                 '}';
     }
 }

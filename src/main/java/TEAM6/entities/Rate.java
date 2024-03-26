@@ -50,6 +50,8 @@ public abstract class Rate {
         return "Rate{" +
                 "id=" + id +
                 ", price=" + price +
+                ", store=" + store +
+                ", user=" + user +
                 '}';
     }
 }

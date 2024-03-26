@@ -1,8 +1,6 @@
 package TEAM6.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tickets")
@@ -12,17 +10,21 @@ public class Ticket extends Rate {
     @Column(name = "is_used")
     private boolean isUsed;
 
-    // CONSTRUCTOR
+    @ManyToOne
+    @JoinColumn(name = "transport_id")
+    private Transport transport;
 
+    // CONSTRUCTOR
     public Ticket(){
     }
-    public Ticket( double price,Store store, boolean isUsed) {
-        super( price,store);
+
+    public Ticket(double price, User user,Store store, boolean isUsed, Transport transport) {
+        super(price, user,store);
         this.isUsed = isUsed;
+        this.transport = transport;
     }
 
     // METHODS
-
     @Override
     public long getId() {
         return id;
@@ -37,15 +39,21 @@ public class Ticket extends Rate {
         isUsed = used;
     }
 
+    public Transport getTransport() {
+        return transport;
+    }
 
+    public void setTransport(Transport transport) {
+        this.transport = transport;
+    }
 
+//    TO STRING
     @Override
     public String toString() {
         return "Ticket{" +
-                "id=" + id +
-                ", isUsed=" + isUsed +
+                "isUsed=" + isUsed +
+                ", transport=" + transport +
                 ", id=" + id +
-                ", isUsed=" + isUsed +
                 ", price=" + price +
                 '}';
     }

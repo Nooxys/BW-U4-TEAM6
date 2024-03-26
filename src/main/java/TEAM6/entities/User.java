@@ -1,23 +1,33 @@
 package TEAM6.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Random;
 
+@Entity
+@Table(name = "users")
 public class User {
 
     // ATTRIBUTES
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private int card;
+    @Column(name = "card_start_date")
     private LocalDate cardStartDate;
+    @Column(name = "card_end_date")
     private LocalDate cardEndDate;
     private String name;
     private String surname;
+    @Column(name = "birth_date")
     private LocalDate birthDate;
+    @Column(name = "phone_number")
     private int phoneNumber;
     private String email;
+    @OneToMany(mappedBy = "user")
+    private List<Rate> rateList;
 
     // CONSTRUCTORS
     public User(int card, String name, String surname, LocalDate birthDate, int phoneNumber, String email) {

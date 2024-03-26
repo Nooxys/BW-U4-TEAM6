@@ -2,6 +2,8 @@ package TEAM6.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "rates")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -16,14 +18,17 @@ public abstract class Rate {
     @ManyToOne
     @JoinColumn(name = "store_id")
     protected Store store;
+    @JoinColumn(name = "rate_id")
+    protected User user;
 
     // CONSTRUCTORS
     public Rate(){
 
     }
-    public Rate(double price, Store store) {
+    public Rate(double price, Store store,User user) {
         this.price = price;
         this.store = store;
+        this.user = user;
     }
 
     // METHODS

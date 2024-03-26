@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.Random;
 
 @Entity
@@ -37,6 +38,8 @@ public class Transport {
     @ManyToOne
     @JoinColumn(name = "route_id")
     private Route route;
+    @OneToMany(mappedBy = "transport")
+    private List<Ticket> ticketList;
 
     //    CONSTRUCTORS
     public Transport(TransportType transportType, String model, TransportStatus transportStatus, Route route) {
@@ -158,6 +161,14 @@ public class Transport {
         if(this.transportStatus == TransportStatus.UNDER_MAINTENANCE) {
             this.underMaintenanceDays = ChronoUnit.DAYS.between(this.underMaintenanceStart, this.underMaintenanceEnd);
         } else this.underMaintenanceDays = 0;
+    }
+
+    public List<Ticket> getTicketList() {
+        return ticketList;
+    }
+
+    public void setTicketList(List<Ticket> ticketList) {
+        this.ticketList = ticketList;
     }
 
     //    TO STRING

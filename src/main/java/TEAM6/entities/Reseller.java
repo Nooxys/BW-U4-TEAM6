@@ -7,20 +7,20 @@ import java.time.LocalTime;
 
 //@Entity
 //@Table(name = "resellers")
-public class Resellers extends Stores{
+public class Reseller extends Store{
 
 //    ATTRIBUTES
     private LocalTime openingTime;
     private LocalTime closingTime;
 
 //    CONSTRUCTORS
-    public Resellers(String location, LocalTime openingTime, LocalTime closingTime) {
+    public Reseller(String location, LocalTime openingTime, LocalTime closingTime) {
         super(location);
         this.openingTime = openingTime;
         this.closingTime = closingTime;
     }
 
-    public Resellers(){}
+    public Reseller(){}
 
 //    GETTERS AND SETTERS
     public LocalTime getOpeningTime() {
@@ -42,7 +42,7 @@ public class Resellers extends Stores{
 //    TO STRING
     @Override
     public String toString() {
-        return "Resellers{" +
+        return "Reseller{" +
                 "openingTime=" + openingTime +
                 ", closingTime=" + closingTime +
                 '}';

@@ -13,11 +13,11 @@ public class User {
     private String name;
     private String surname;
     private LocalDate birthDate;
-    private String phoneNumber;
+    private int phoneNumber;
     private String email;
 
     // CONSTRUCTORS
-    public User(int card, String name, String surname, LocalDate birthDate, String phoneNumber, String email) {
+    public User(int card, String name, String surname, LocalDate birthDate, int phoneNumber, String email) {
         this.card = card;
         setCardStartDate();
         setCardEndDate();
@@ -59,7 +59,7 @@ public class User {
         return birthDate;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -92,7 +92,7 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

@@ -5,6 +5,8 @@ import TEAM6.exceptions.NoFoundException;
 import TEAM6.exceptions.NoRateException;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 public class RatesDAO {
     private EntityManager em;
 
@@ -49,4 +51,22 @@ public class RatesDAO {
         }
     }
 
+//    QUERIES
+    public long numberOfTicketsByStoreAndDate(long storeId, int month) {
+        TypedQuery<Long> query = em.createNamedQuery("numberOfTicketsByStoreAndDate", Long.class);
+        query.setParameter("storeId", storeId);
+        query.setParameter("month", month);
+        return query.getSingleResult();
+    }
+
+    public long numberOfSubscriptionsByStoreAndDate(long storeId, int month) {
+        TypedQuery<Long> query = em.createNamedQuery("numberOfSubscriptionsByStoreAndDate", Long.class);
+        query.setParameter("storeId", storeId);
+        query.setParameter("month", month);
+        return query.getSingleResult();
+    }
+
+    public long numberOfRatesByStoreAndData(long storeId, int month){
+        return numberOfTicketsByStoreAndDate(storeId, month) + numberOfSubscriptionsByStoreAndDate(storeId, month);
+    }
 }

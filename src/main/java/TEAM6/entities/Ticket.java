@@ -2,11 +2,17 @@ package TEAM6.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "tickets")
+@NamedQuery(name = "numberOfTicketsByStoreAndDate", query = "SELECT COUNT(t) FROM Ticket t WHERE t.store.id = :storeId GROUP BY EXTRACT(MONTH FROM t.emissionDate) HAVING EXTRACT(MONTH FROM t.emissionDate) = :month ")
 public class Ticket extends Rate {
 
     // ATTRIBUTES
+
+    LocalDate emissionDate;
+
     @Column(name = "is_used")
     private boolean isUsed;
 
@@ -18,11 +24,12 @@ public class Ticket extends Rate {
     public Ticket(){
     }
 
-    public Ticket(Store store, User user, boolean isUsed, Transport transport) {
+    public Ticket(Store store, User user, boolean isUsed, Transport transport, LocalDate emissionDate) {
         super(store, user);
         setPrice();
         this.isUsed = isUsed;
         this.transport = transport;
+        this.emissionDate = emissionDate;
     }
 
     // METHODS
@@ -53,11 +60,20 @@ public class Ticket extends Rate {
         this.price = 2.50;
     }
 
-//    TO STRING
+    public LocalDate getEmissionDate() {
+        return emissionDate;
+    }
+
+    public void setEmissionDate(LocalDate emissionDate) {
+        this.emissionDate = emissionDate;
+    }
+
+    //    TO STRING
     @Override
     public String toString() {
         return "Ticket{" +
-                "isUsed=" + isUsed +
+                "emissionDate=" + emissionDate +
+                ", isUsed=" + isUsed +
                 ", transport=" + transport +
                 ", id=" + id +
                 ", price=" + price +

@@ -90,11 +90,19 @@ Random random = new Random();
 //            if (random.nextInt(1, 3) == 1){
 //                ratesDAO.save(new Subscription(storesDAO.findById(random.nextInt(1, 21)), userDAO.findById(random.nextInt(1, 21)), random.nextInt(1, 3) == 1 ? SubType.WEEKLY : SubType.MONTHLY));
 //            } else {
-//                ratesDAO.save(new Ticket(storesDAO.findById(random.nextInt(1, 21)), userDAO.findById(random.nextInt(1, 21)), random.nextInt(1, 3) == 1, transportDAO.findById(random.nextInt(1, 21))));
+//                ratesDAO.save(new Ticket(storesDAO.findById(random.nextInt(1, 21)), userDAO.findById(random.nextInt(1, 21)), random.nextInt(1, 3) == 1, transportDAO.findById(random.nextInt(1, 21)), LocalDate.of(2024, random.nextInt(1, 4), random.nextInt(1, 29))));
 //            }
 //        }
 
-        transportDAO.findById(18).getMaintenanceList().forEach(System.out::println);
+
+//        FUNZIONA CONTA TICKET PER STORE E DATA
+//        System.out.println(ratesDAO.numberOfTicketsByStoreAndDate(8, 2));
+
+//        FUNZIONE CONTA SUBSCRIPTION PER STORE E DATA
+//        System.out.println(ratesDAO.numberOfSubscriptionsByStoreAndDate(8, 2));
+
+//        FUNZIONA CONTA RATES PER STORE E DATA
+//        System.out.println(ratesDAO.numberOfRatesByStoreAndData(8, 2));
 
         em.close();
         emf.close();

@@ -10,6 +10,7 @@ import java.util.Random;
 
 @Entity
 @Table(name = "subscriptions")
+@NamedQuery(name = "numberOfSubscriptionsByStoreAndDate", query = "SELECT COUNT(s) FROM Subscription s WHERE s.store.id = :storeId GROUP BY EXTRACT(MONTH FROM s.startingDate) HAVING EXTRACT(MONTH FROM s.startingDate) = :month ")
 public class Subscription extends Rate {
 
     // ATTRIBUTES

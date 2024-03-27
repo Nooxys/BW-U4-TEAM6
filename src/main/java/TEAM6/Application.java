@@ -111,8 +111,8 @@ Random random = new Random();
 //        conta quanti ticket sono stati vidimati in un periodo di tempo
 //        System.out.println(ratesDAO.countTicketByMonth(2));
 
-//        FUNZIONE PER LA VERiFICA DEGLI ABBONAMENTI DA UNA TESSERA UTENTE
-        ratesDAO.verifyActiveSubscription(335, 3).forEach(System.out::println);
+//        FUNZIONE PER LA VERIFICA DEGLI ABBONAMENTI DA UNA TESSERA UTENTE
+//        ratesDAO.verifyActiveSubscription(13).forEach(System.out::println);
 
         em.close();
         emf.close();

@@ -79,10 +79,9 @@ public class RatesDAO {
         return query.getSingleResult();
     }
 
-    public List<Subscription> verifyActiveSubscription(int card, int month){
+    public List<Subscription> verifyActiveSubscription(int card){
         TypedQuery<Subscription> query = em.createNamedQuery("verifyActiveSubscription", Subscription.class);
         query.setParameter("card", card);
-        query.setParameter("month", month);
         return query.getResultList();
     }
 }

@@ -11,7 +11,7 @@ import java.util.Random;
 @Entity
 @Table(name = "subscriptions")
 @NamedQuery(name = "numberOfSubscriptionsByStoreAndDate", query = "SELECT COUNT(s) FROM Subscription s WHERE s.store.id = :storeId GROUP BY EXTRACT(MONTH FROM s.startingDate) HAVING EXTRACT(MONTH FROM s.startingDate) = :month ")
-@NamedQuery(name = "verifyActiveSubscription", query = "SELECT s FROM Subscription s WHERE s.user.card = :card AND EXTRACT(MONTH FROM s.startingDate) = :month")
+@NamedQuery(name = "verifyActiveSubscription", query = "SELECT s FROM Subscription s WHERE s.user.card = :card AND s.isActive = true")
 public class Subscription extends Rate {
 
     // ATTRIBUTES
@@ -22,6 +22,7 @@ public class Subscription extends Rate {
     @Column(name = "ending_date")
     private LocalDate endingDate;
     private long duration;
+    private boolean isActive;
 
 
     // CONSTRUCTORS
@@ -36,6 +37,7 @@ public class Subscription extends Rate {
         setStartingDate();
         setEndingDate();
         setDuration();
+        setActive();
     }
 
 // METHODS
@@ -79,6 +81,18 @@ public class Subscription extends Rate {
 
     public void setDuration() {
         this.duration = ChronoUnit.DAYS.between(this.startingDate, this.endingDate);
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive() {
+        if (this.endingDate.isAfter(LocalDate.now()) && this.startingDate.isBefore(LocalDate.now())){
+            this.isActive = true;
+        } else {
+            this.isActive = false;
+        }
     }
 
     @Override

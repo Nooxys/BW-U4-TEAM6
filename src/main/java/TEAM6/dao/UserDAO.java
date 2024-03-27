@@ -6,6 +6,12 @@ import TEAM6.exceptions.NoFoundException;
 import TEAM6.exceptions.NoUserException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
+
+import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
 
 public class UserDAO {
     private EntityManager em;
@@ -48,6 +54,18 @@ public class UserDAO {
 
         } catch (NoUserException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    //    QUERIES
+    public void updateUserCard(int id){
+        User newUser = findById(id);
+        if(newUser.getCardEndDate().isBefore(LocalDate.now())){
+            newUser.setCardStartDate(LocalDate.now());
+            newUser.setCardEndDate(LocalDate.now().plusYears(1));
+            save(newUser);
+        } else {
+            System.out.println("The user card is still valid!");
         }
     }
 }

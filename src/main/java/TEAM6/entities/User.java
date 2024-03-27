@@ -32,8 +32,8 @@ public class User {
     // CONSTRUCTORS
     public User(int card, String name, String surname, LocalDate birthDate, String phoneNumber, String email) {
         this.card = card;
-        setCardStartDate();
-        setCardEndDate();
+        randomCardStartDate();
+        randomCardEndDate();
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
@@ -48,7 +48,7 @@ public class User {
         return id;
     }
 
-    public int getCardFk() {
+    public int getCard() {
         return card;
     }
 
@@ -80,16 +80,16 @@ public class User {
         return email;
     }
 
-    public void setCardFk(int card) {
+    public void setCard(int card) {
         this.card = card;
     }
 
-    public void setCardStartDate() {
+    public void randomCardStartDate() {
         Random random = new Random();
         this.cardStartDate = LocalDate.of(2024, random.nextInt(1, 4), random.nextInt(1, 29));
     }
 
-    public void setCardEndDate() {
+    public void randomCardEndDate() {
         this.cardEndDate = this.cardStartDate.plusYears(1);
     }
 
@@ -119,6 +119,14 @@ public class User {
 
     public void setRateList(List<Rate> rateList) {
         this.rateList = rateList;
+    }
+
+    public void setCardStartDate(LocalDate cardStartDate) {
+        this.cardStartDate = cardStartDate;
+    }
+
+    public void setCardEndDate(LocalDate cardEndDate) {
+        this.cardEndDate = cardEndDate;
     }
 
     //    TO STRING

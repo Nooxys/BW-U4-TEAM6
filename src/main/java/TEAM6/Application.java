@@ -117,6 +117,9 @@ Random random = new Random();
 //        FUNZIONE PER CONTARE QUANTE VOLTE UN MEZZO HA PERCORSO UNA ROTTA
 //        countTransportTravelsOnRoutes(5, transportDAO);
 
+//        FUNZIONE PER AGGIORNARE LA CARD
+        userDAO.updateUserCard(1);
+
         em.close();
         emf.close();
     }

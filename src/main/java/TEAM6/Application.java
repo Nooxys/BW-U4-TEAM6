@@ -106,7 +106,7 @@ Random random = new Random();
 //        FUNZIONE PER LA VALIDAZIONE DEI TICKET DA UN CERTO MEZZO
 //        transportDAO.updateTicketStatus(281);
 //        transportDAO.findById(1).getTicketList().forEach(System.out::println);
-//       conta quanti ticket sono stati vidimati su mezzo
+//        conta quanti ticket sono stati vidimati su mezzo
 //        System.out.println(transportDAO.findById(1).getTicketList().stream().filter(Ticket::isUsed).toList().size());
 //        conta quanti ticket sono stati vidimati in un periodo di tempo
 //        System.out.println(ratesDAO.countTicketByMonth(2));
@@ -114,7 +114,21 @@ Random random = new Random();
 //        FUNZIONE PER LA VERIFICA DEGLI ABBONAMENTI DA UNA TESSERA UTENTE
 //        ratesDAO.verifyActiveSubscription(13).forEach(System.out::println);
 
+//        FUNZIONE PER CONTARE QUANTE VOLTE UN MEZZO HA PERCORSO UNA ROTTA
+//        countTransportTravelsOnRoutes(5, transportDAO);
+
         em.close();
         emf.close();
+    }
+
+    public static void countTransportTravelsOnRoutes(long transportId, TransportDAO transportDAO) {
+        if (transportDAO.findById(transportId).getTransportStatus() == TransportStatus.ON_SERVICE) {
+           long numberOfTravels = Math.round(810 / (transportDAO.findById(transportId).getRoute().getAverageTime() * 2));
+           double realAverageTime = (double) 810 / numberOfTravels;
+            System.out.println("This transport has been completed his route " + numberOfTravels + " times");
+            System.out.println("The real average time is about to " + realAverageTime/2 + " minutes");
+        } else {
+            System.out.println("This transport is still under maintenance");
+        }
     }
 }

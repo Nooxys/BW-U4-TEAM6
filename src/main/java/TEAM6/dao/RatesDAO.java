@@ -76,21 +76,21 @@ public class RatesDAO {
     }
 
     //STAMPA BIGLIETTI
-    public void ticketPrint(int storeIntId) {
-        Store storeFound = em.find(Store.class, storeIntId);
-        if (storeFound != null) {
-            Rate ticket = new Ticket();
-            RatesDAO ratesDao = new RatesDAO(em);
-            ratesDao.save(ticket);
-        } else if (storeFound instanceof Dispenser) {
-            Dispenser dispenser = (Dispenser) storeFound;
-            if (!dispenser.getStatus()) {
-                System.out.println("Impossibile emettere il ticket. Distributore non attivo.");
-            }
-        }
-        else {
-            throw new NoRateException(storeIntId);
-        }
+//    public void ticketPrint(int storeIntId) {
+//        Store storeFound = em.find(Store.class, storeIntId);
+//        if (storeFound != null) {
+//            Rate ticket = new Ticket();
+//            RatesDAO ratesDao = new RatesDAO(em);
+//            ratesDao.save(ticket);
+//        } else if (storeFound instanceof Dispenser) {
+//            Dispenser dispenser = (Dispenser) storeFound;
+//            if (!dispenser.getStatus()) {
+//                System.out.println("Impossibile emettere il ticket. Distributore non attivo.");
+//            }
+//        }
+//        else {
+//            throw new NoRateException(storeIntId);
+//        }
     public long countTicketByMonth(int month){
         TypedQuery<Long> query = em.createNamedQuery("countTicketByMonth", Long.class);
         query.setParameter("month", month);

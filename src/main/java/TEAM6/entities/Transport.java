@@ -101,6 +101,14 @@ public class Transport {
         this.maintenanceList = maintenanceList;
     }
 
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
+    }
+
     //    TO STRING
     @Override
     public String toString() {

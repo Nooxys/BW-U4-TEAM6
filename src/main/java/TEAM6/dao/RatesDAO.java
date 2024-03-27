@@ -3,12 +3,14 @@ package TEAM6.dao;
 import TEAM6.entities.Dispenser;
 import TEAM6.entities.Rate;
 import TEAM6.entities.Store;
+import TEAM6.entities.Subscription;
 import TEAM6.entities.Ticket;
 import TEAM6.exceptions.NoFoundException;
 import TEAM6.exceptions.NoRateException;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class RatesDAO {
     private EntityManager em;
@@ -89,5 +91,15 @@ public class RatesDAO {
         else {
             throw new NoRateException(storeIntId);
         }
+    public long countTicketByMonth(int month){
+        TypedQuery<Long> query = em.createNamedQuery("countTicketByMonth", Long.class);
+        query.setParameter("month", month);
+        return query.getSingleResult();
+    }
+
+    public List<Subscription> verifyActiveSubscription(int card){
+        TypedQuery<Subscription> query = em.createNamedQuery("verifyActiveSubscription", Subscription.class);
+        query.setParameter("card", card);
+        return query.getResultList();
     }
 }

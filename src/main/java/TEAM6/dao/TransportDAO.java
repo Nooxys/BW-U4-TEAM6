@@ -5,9 +5,11 @@ package TEAM6.dao;
 
 import TEAM6.entities.Transport;
 import TEAM6.exceptions.NoFoundException;
+import TEAM6.exceptions.NoRateException;
 import TEAM6.exceptions.NoTransportException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 
 public class TransportDAO {
     private EntityManager em;
@@ -50,5 +52,15 @@ public class TransportDAO {
         } catch (NoTransportException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void updateTicketStatus(long id){
+        EntityTransaction t = em.getTransaction();
+        t.begin();
+        Query query = em.createNamedQuery("updateTicketStatus");
+        query.setParameter("id", id);
+        query.executeUpdate();
+        t.commit();
+        System.out.println("Ticket has been updated correctly");
     }
 }

@@ -94,7 +94,6 @@ Random random = new Random();
 //            }
 //        }
 
-
 //        FUNZIONA CONTA TICKET PER STORE E DATA
 //        System.out.println(ratesDAO.numberOfTicketsByStoreAndDate(8, 2));
 
@@ -103,6 +102,17 @@ Random random = new Random();
 
 //        FUNZIONA CONTA RATES PER STORE E DATA
 //        System.out.println(ratesDAO.numberOfRatesByStoreAndData(8, 2));
+
+//        FUNZIONE PER LA VALIDAZIONE DEI TICKET DA UN CERTO MEZZO
+//        transportDAO.updateTicketStatus(281);
+//        transportDAO.findById(1).getTicketList().forEach(System.out::println);
+//       conta quanti ticket sono stati vidimati su mezzo
+//        System.out.println(transportDAO.findById(1).getTicketList().stream().filter(Ticket::isUsed).toList().size());
+//        conta quanti ticket sono stati vidimati in un periodo di tempo
+//        System.out.println(ratesDAO.countTicketByMonth(2));
+
+//        FUNZIONE PER LA VERIFICA DEGLI ABBONAMENTI DA UNA TESSERA UTENTE
+//        ratesDAO.verifyActiveSubscription(13).forEach(System.out::println);
 
         em.close();
         emf.close();

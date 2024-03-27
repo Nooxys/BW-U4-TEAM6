@@ -1,6 +1,9 @@
 package TEAM6.dao;
 
+import TEAM6.entities.Dispenser;
 import TEAM6.entities.Rate;
+import TEAM6.entities.Store;
+import TEAM6.entities.Ticket;
 import TEAM6.exceptions.NoFoundException;
 import TEAM6.exceptions.NoRateException;
 import jakarta.persistence.*;
@@ -68,5 +71,23 @@ public class RatesDAO {
 
     public long numberOfRatesByStoreAndData(long storeId, int month){
         return numberOfTicketsByStoreAndDate(storeId, month) + numberOfSubscriptionsByStoreAndDate(storeId, month);
+    }
+
+    //STAMPA BIGLIETTI
+    public void ticketPrint(int storeIntId) {
+        Store storeFound = em.find(Store.class, storeIntId);
+        if (storeFound != null) {
+            Rate ticket = new Ticket();
+            RatesDAO ratesDao = new RatesDAO(em);
+            ratesDao.save(ticket);
+        } else if (storeFound instanceof Dispenser) {
+            Dispenser dispenser = (Dispenser) storeFound;
+            if (!dispenser.getStatus()) {
+                System.out.println("Impossibile emettere il ticket. Distributore non attivo.");
+            }
+        }
+        else {
+            throw new NoRateException(storeIntId);
+        }
     }
 }

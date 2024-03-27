@@ -11,6 +11,7 @@ import java.util.Random;
 @Entity
 @Table(name = "subscriptions")
 @NamedQuery(name = "numberOfSubscriptionsByStoreAndDate", query = "SELECT COUNT(s) FROM Subscription s WHERE s.store.id = :storeId GROUP BY EXTRACT(MONTH FROM s.startingDate) HAVING EXTRACT(MONTH FROM s.startingDate) = :month ")
+@NamedQuery(name = "verifyActiveSubscription", query = "SELECT s FROM Subscription s WHERE s.user.card = :card AND EXTRACT(MONTH FROM s.startingDate) = :month")
 public class Subscription extends Rate {
 
     // ATTRIBUTES
@@ -99,7 +100,6 @@ public class Subscription extends Rate {
                 ", id=" + id +
                 ", price=" + price +
                 ", store=" + store +
-                ", user=" + user +
                 '}';
     }
 }

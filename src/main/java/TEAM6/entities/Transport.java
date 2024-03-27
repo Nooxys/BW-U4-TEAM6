@@ -113,4 +113,17 @@ public class Transport {
                 ", route=" + route +
                 '}';
     }
+
+//    public void printValidatedTicketsCount(){
+//        List<Ticket> validateTickets = this.getTicketList().stream().filter(Ticket::isUsed).toList();
+//        System.out.println(validateTickets.size());
+//    }
+//
+//    public void checkTicket(Ticket ticket){
+//        if (ticket.isUsed()) {
+//            System.out.println("The ticket has been already used");
+//        } else {
+//            System.out.println("The ticket has been correctly validated");
+//        }
+//    }
 }

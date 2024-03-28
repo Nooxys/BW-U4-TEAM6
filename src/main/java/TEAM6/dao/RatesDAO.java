@@ -55,17 +55,29 @@ public class RatesDAO {
 
 //    QUERIES
     public long numberOfTicketsByStoreAndDate(long storeId, int month) {
-        TypedQuery<Long> query = em.createNamedQuery("numberOfTicketsByStoreAndDate", Long.class);
-        query.setParameter("storeId", storeId);
-        query.setParameter("month", month);
-        return query.getSingleResult();
+        long counter = 0;
+        try {
+            TypedQuery<Long> query = em.createNamedQuery("numberOfTicketsByStoreAndDate", Long.class);
+            query.setParameter("storeId", storeId);
+            query.setParameter("month", month);
+            counter = query.getSingleResult();
+        } catch (NoResultException e){
+            System.out.println("No results have been found!");
+        }
+        return counter;
     }
 
     public long numberOfSubscriptionsByStoreAndDate(long storeId, int month) {
-        TypedQuery<Long> query = em.createNamedQuery("numberOfSubscriptionsByStoreAndDate", Long.class);
-        query.setParameter("storeId", storeId);
-        query.setParameter("month", month);
-        return query.getSingleResult();
+        long counter = 0;
+        try {
+            TypedQuery<Long> query = em.createNamedQuery("numberOfSubscriptionsByStoreAndDate", Long.class);
+            query.setParameter("storeId", storeId);
+            query.setParameter("month", month);
+            counter = query.getSingleResult();
+        } catch (NoResultException e){
+            System.out.println("No results have been found!");
+        }
+        return counter;
     }
 
     public long numberOfRatesByStoreAndData(long storeId, int month){
@@ -114,9 +126,15 @@ public class RatesDAO {
     }
 
     public long countTicketByMonth(int month){
-        TypedQuery<Long> query = em.createNamedQuery("countTicketByMonth", Long.class);
-        query.setParameter("month", month);
-        return query.getSingleResult();
+        long count = 0;
+        try {
+            TypedQuery<Long> query = em.createNamedQuery("countTicketByMonth", Long.class);
+            query.setParameter("month", month);
+            count = query.getSingleResult();
+        } catch (NoResultException e)  {
+            System.out.println("No result has been found!");
+        }
+        return count;
     }
 
     public List<Subscription> verifyActiveSubscription(int card){

@@ -94,31 +94,39 @@ Random random = new Random();
 //            }
 //        }
 
-//        FUNZIONA CONTA TICKET PER STORE E DATA
-//        System.out.println(ratesDAO.numberOfTicketsByStoreAndDate(8, 2));
+//        FUNZIONA CONTA TICKET PER STORE E DATA (ERRORI GESTITI)
+//        if (ratesDAO.numberOfTicketsByStoreAndDate(0, 0) != 0) System.out.println(ratesDAO.numberOfTicketsByStoreAndDate(0, 0));
 
-//        FUNZIONE CONTA SUBSCRIPTION PER STORE E DATA
-//        System.out.println(ratesDAO.numberOfSubscriptionsByStoreAndDate(8, 2));
+//        FUNZIONE CONTA SUBSCRIPTION PER STORE E DATA (ERRORI GESTITI)
+//        System.out.println(ratesDAO.);
+//        if (ratesDAO.numberOfSubscriptionsByStoreAndDate(0, 0) != 0) System.out.println(ratesDAO.numberOfSubscriptionsByStoreAndDate(0, 0));
 
-//        FUNZIONA CONTA RATES PER STORE E DATA
-//        System.out.println(ratesDAO.numberOfRatesByStoreAndData(8, 2));
+//        FUNZIONA CONTA RATES PER STORE E DATA (ERRORI GESTITI)
+//        System.out.println("The number of tickets and subscriptions is: " + ratesDAO.numberOfRatesByStoreAndData(0, 0));
 
-//        FUNZIONE PER LA VALIDAZIONE DEI TICKET DA UN CERTO MEZZO
+//        FUNZIONE PER LA VALIDAZIONE DEI TICKET DA UN CERTO MEZZO (ERRORI GESTITI)
 //        transportDAO.updateTicketStatus(281);
 //        transportDAO.findById(1).getTicketList().forEach(System.out::println);
-//        conta quanti ticket sono stati vidimati su mezzo
-//        System.out.println(transportDAO.findById(1).getTicketList().stream().filter(Ticket::isUsed).toList().size());
-//        conta quanti ticket sono stati vidimati in un periodo di tempo
-//        System.out.println(ratesDAO.countTicketByMonth(2));
+
+//        conta quanti ticket sono stati vidimati su mezzo (ERRORI GESTITI)
+//        Transport transport = transportDAO.findById(0);
+//        if (transport != null) {
+//            System.out.println(transport.getTicketList().stream().filter(Ticket::isUsed).toList().size());
+//        } else {
+//            System.out.println("No transport have been found!");
+//        }
+//
+//        conta quanti ticket sono stati vidimati in un periodo di tempo (ERRORI GESTITI)
+//        if (ratesDAO.countTicketByMonth(0) != 0) System.out.println(ratesDAO.countTicketByMonth(0));
 
 //        FUNZIONE PER LA VERIFICA DEGLI ABBONAMENTI DA UNA TESSERA UTENTE (ERRORI GESTITI)
-        List<Subscription> subscriptionList = ratesDAO.verifyActiveSubscription(1);
-        if (!subscriptionList.isEmpty()) {
-            ratesDAO.verifyActiveSubscription(1).forEach(System.out::println);
-        } else System.out.println("This user has no active subscriptions");
+//        List<Subscription> subscriptionList = ratesDAO.verifyActiveSubscription(1);
+//        if (!subscriptionList.isEmpty()) {
+//            ratesDAO.verifyActiveSubscription(1).forEach(System.out::println);
+//        } else System.out.println("This user has no active subscriptions");
 
 
-//        FUNZIONE PER CONTARE QUANTE VOLTE UN MEZZO HA PERCORSO UNA ROTTA
+//        FUNZIONE PER CONTARE QUANTE VOLTE UN MEZZO HA PERCORSO UNA ROTTA (ERRORI GESTITI)
 //        countTransportTravelsOnRoutes(5, transportDAO);
 
 //        FUNZIONE PER AGGIORNARE LA CARD (ERRORI GESTITI)
@@ -129,13 +137,19 @@ Random random = new Random();
     }
 
     public static void countTransportTravelsOnRoutes(long transportId, TransportDAO transportDAO) {
-        if (transportDAO.findById(transportId).getTransportStatus() == TransportStatus.ON_SERVICE) {
-           long numberOfTravels = Math.round(810 / (transportDAO.findById(transportId).getRoute().getAverageTime() * 2));
-           double realAverageTime = (double) 810 / numberOfTravels;
-            System.out.println("This transport has been completed his route " + numberOfTravels + " times");
-            System.out.println("The real average time is about to " + realAverageTime/2 + " minutes");
+        Transport transport = transportDAO.findById(transportId);
+        if (transport != null) {
+            if (transport.getTransportStatus() == TransportStatus.ON_SERVICE) {
+                long numberOfTravels = Math.round(810 / (transport.getRoute().getAverageTime() * 2));
+                double realAverageTime = (double) 810 / numberOfTravels;
+                System.out.println("This transport has been completed his route " + numberOfTravels + " times");
+                System.out.println("The real average time is about to " + realAverageTime/2 + " minutes");
+            } else {
+                System.out.println("This transport is still under maintenance");
+            }
         } else {
-            System.out.println("This transport is still under maintenance");
+            System.out.println("No transports have been found with this id: " + transportId);
         }
+
     }
 }

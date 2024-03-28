@@ -60,12 +60,17 @@ public class UserDAO {
     //    QUERIES
     public void updateUserCard(int id){
         User newUser = findById(id);
-        if(newUser.getCardEndDate().isBefore(LocalDate.now())){
-            newUser.setCardStartDate(LocalDate.now());
-            newUser.setCardEndDate(LocalDate.now().plusYears(1));
-            save(newUser);
+        if (newUser != null) {
+            if(newUser.getCardEndDate().isBefore(LocalDate.now())){
+                newUser.setCardStartDate(LocalDate.now());
+                newUser.setCardEndDate(LocalDate.now().plusYears(1));
+                save(newUser);
+            } else {
+                System.out.println("The user card is still valid!");
+            }
         } else {
-            System.out.println("The user card is still valid!");
+            System.out.println("No user has been found with this id: " + id);
         }
+
     }
 }

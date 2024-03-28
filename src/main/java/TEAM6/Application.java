@@ -111,14 +111,18 @@ Random random = new Random();
 //        conta quanti ticket sono stati vidimati in un periodo di tempo
 //        System.out.println(ratesDAO.countTicketByMonth(2));
 
-//        FUNZIONE PER LA VERIFICA DEGLI ABBONAMENTI DA UNA TESSERA UTENTE
-//        ratesDAO.verifyActiveSubscription(13).forEach(System.out::println);
+//        FUNZIONE PER LA VERIFICA DEGLI ABBONAMENTI DA UNA TESSERA UTENTE (ERRORI GESTITI)
+        List<Subscription> subscriptionList = ratesDAO.verifyActiveSubscription(1);
+        if (!subscriptionList.isEmpty()) {
+            ratesDAO.verifyActiveSubscription(1).forEach(System.out::println);
+        } else System.out.println("This user has no active subscriptions");
+
 
 //        FUNZIONE PER CONTARE QUANTE VOLTE UN MEZZO HA PERCORSO UNA ROTTA
 //        countTransportTravelsOnRoutes(5, transportDAO);
 
-//        FUNZIONE PER AGGIORNARE LA CARD
-        userDAO.updateUserCard(1);
+//        FUNZIONE PER AGGIORNARE LA CARD (ERRORI GESTITI)
+//        userDAO.updateUserCard(40);
 
         em.close();
         emf.close();

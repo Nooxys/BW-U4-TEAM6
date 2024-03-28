@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "tickets")
-@NamedQuery(name = "numberOfTicketsByStoreAndDate", query = "SELECT COUNT(t) FROM Ticket t WHERE t.store.id = :storeId GROUP BY EXTRACT(MONTH FROM t.emissionDate) HAVING EXTRACT(MONTH FROM t.emissionDate) = :month ")
+@NamedQuery(name = "numberOfTicketsByStoreAndDate", query = "SELECT COUNT(t) FROM Ticket t WHERE t.store.id = :storeId GROUP BY EXTRACT(MONTH FROM t.emissionDate) HAVING EXTRACT(MONTH FROM t.emissionDate) = :month")
 @NamedQuery(name = "updateTicketStatus", query = "UPDATE Ticket t SET t.isUsed = true WHERE t.id = :id AND t.isUsed = false")
 @NamedQuery(name = "countTicketByMonth", query = "SELECT COUNT(t) FROM Ticket t GROUP BY EXTRACT(MONTH FROM t.emissionDate) HAVING EXTRACT(MONTH FROM t.emissionDate) = :month")
 public class Ticket extends Rate {

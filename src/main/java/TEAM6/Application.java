@@ -1,25 +1,19 @@
 package TEAM6;
 
 import TEAM6.dao.*;
-import TEAM6.entities.*;
-import TEAM6.enums.MaintenanceType;
-import TEAM6.enums.SubType;
-import TEAM6.enums.TransportStatus;
-import TEAM6.enums.TransportType;
 import com.github.javafaker.Faker;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Locale;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Application {
-Random random = new Random();
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("BW4");
+
+    Random random = new Random();
 
     public static void main(String[] args) {
 
@@ -31,7 +25,7 @@ Random random = new Random();
         StoresDAO storesDAO = new StoresDAO(em);
         RatesDAO ratesDAO = new RatesDAO(em);
         MaintenanceDAO maintenanceDAO = new MaintenanceDAO(em);
-
+        Scanner scanner = new Scanner(System.in);
 
 //        PROVA SUBSCRIPTIONS
 //        List<Subscription> subscriptionList = new ArrayList<>();
@@ -96,6 +90,67 @@ Random random = new Random();
 
 //        FUNZIONA CONTA TICKET PER STORE E DATA (ERRORI GESTITI)
 //        if (ratesDAO.numberOfTicketsByStoreAndDate(0, 0) != 0) System.out.println(ratesDAO.numberOfTicketsByStoreAndDate(0, 0));
+//        public static void countTransportTravelsOnRoutes(long transportId, TransportDAO transportDAO) {
+//            if (transportDAO.findById(transportId).getTransportStatus() == TransportStatus.ON_SERVICE) {
+//                long numberOfTravels = Math.round(810 / (transportDAO.findById(transportId).getRoute().getAverageTime() * 2));
+//                double realAverageTime = (double) 810 / numberOfTravels;
+//                System.out.println("This transport has been completed his route " + numberOfTravels + " times");
+//                System.out.println("The real average time is about to " + realAverageTime/2 + " minutes");
+//            } else {
+//                System.out.println("This transport is still under maintenance");
+//            }
+//        }
+
+        int value;
+        do {
+            System.out.println("Starting program..");
+            System.out.println("Press 0 to close the program!");
+            System.out.println("Press 1 to count tickets for store and date!");
+            System.out.println("Press 2 to count subriptions for store and date!");
+            System.out.println("Press 3 to count all the rates for store and date!");
+            System.out.println("Press 4 to validate a ticket on a transport!");
+            System.out.println("Press 5 count how many tickets were validate on 1 specific transport!");
+            System.out.println("Press 6 to count how many tickets were validate in a specific range of time");
+            System.out.println("Press 7 to verify the subscriptions based on user card!");
+            System.out.println("Press 8 count how many times a transport traveled 1 specific route!");
+            System.out.println("Press 9 to renew your User card!");
+            value = Integer.parseInt(scanner.nextLine());
+            switch (value) {
+                case 1:
+                    System.out.println(ratesDAO.numberOfTicketsByStoreAndDate(17, 3));
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+
+                    break;
+                case 6:
+
+                    break;
+                case 7:
+
+                    break;
+
+                case 0:
+                    System.out.println("closing program..");
+                    scanner.close();
+                    break;
+                default:
+                    System.err.println("error! insert the correct value!");
+
+            }
+        } while (value != 0);
+
+
+//        FUNZIONA CONTA TICKET PER STORE E DATA
+//        System.out.println(ratesDAO.numberOfTicketsByStoreAndDate(8, 2));
 
 //        FUNZIONE CONTA SUBSCRIPTION PER STORE E DATA (ERRORI GESTITI)
 //        System.out.println(ratesDAO.);
@@ -153,3 +208,6 @@ Random random = new Random();
 
     }
 }
+
+
+

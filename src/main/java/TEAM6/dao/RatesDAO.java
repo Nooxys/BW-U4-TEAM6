@@ -2,11 +2,12 @@ package TEAM6.dao;
 
 import TEAM6.entities.*;
 import TEAM6.enums.SubType;
-import TEAM6.exceptions.NoFoundException;
 import TEAM6.exceptions.NoRateException;
-import jakarta.persistence.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class RatesDAO {
@@ -53,7 +54,7 @@ public class RatesDAO {
         }
     }
 
-//    QUERIES
+    //    QUERIES
     public long numberOfTicketsByStoreAndDate(long storeId, int month) {
         TypedQuery<Long> query = em.createNamedQuery("numberOfTicketsByStoreAndDate", Long.class);
         query.setParameter("storeId", storeId);
@@ -68,7 +69,7 @@ public class RatesDAO {
         return query.getSingleResult();
     }
 
-    public long numberOfRatesByStoreAndData(long storeId, int month){
+    public long numberOfRatesByStoreAndData(long storeId, int month) {
         return numberOfTicketsByStoreAndDate(storeId, month) + numberOfSubscriptionsByStoreAndDate(storeId, month);
     }
 
@@ -113,13 +114,20 @@ public class RatesDAO {
         }
     }
 
-    public long countTicketByMonth(int month){
-        TypedQuery<Long> query = em.createNamedQuery("countTicketByMonth", Long.class);
-        query.setParameter("month", month);
-        return query.getSingleResult();
+    public long countTicketByMonth(int month) {
+        long count = 0;
+        try {
+            TypedQuery<Long> query = em.createNamedQuery("countTicketByMonth", Long.class);
+            query.setParameter("month", month);
+            count = query.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println("No result has been found!");
+        }
+        return count;
     }
 
-    public List<Subscription> verifyActiveSubscription(int card){
+
+    public List<Subscription> verifyActiveSubscription(int card) {
         TypedQuery<Subscription> query = em.createNamedQuery("verifyActiveSubscription", Subscription.class);
         query.setParameter("card", card);
         return query.getResultList();

@@ -1,10 +1,7 @@
 package TEAM6.dao;
 
-import TEAM6.entities.Dispenser;
-import TEAM6.entities.Rate;
-import TEAM6.entities.Store;
-import TEAM6.entities.Subscription;
-import TEAM6.entities.Ticket;
+import TEAM6.entities.*;
+import TEAM6.enums.SubType;
 import TEAM6.exceptions.NoFoundException;
 import TEAM6.exceptions.NoRateException;
 import jakarta.persistence.*;
@@ -91,6 +88,31 @@ public class RatesDAO {
 //        else {
 //            throw new NoRateException(storeIntId);
 //        }
+
+
+    // PRINT SUBS ----> DA RIVEDERE E PROVARE
+    public void subscriptionPrint(int storeIntId, long cardId, SubType type) {
+        Store storeFound = em.find(Store.class, storeIntId);
+        User card = em.find(User.class, cardId);
+
+        if (storeFound != null && card != null) {
+            Subscription subscription = new Subscription();
+            subscription.setType(type);
+            subscription.setStartingDate();
+            subscription.setDuration();
+            subscription.setActive();
+            RatesDAO ratesDao = new RatesDAO(em);
+            ratesDao.save(subscription);
+        } else if (storeFound instanceof Dispenser) {
+            Dispenser dispenser = (Dispenser) storeFound;
+            if (!dispenser.getStatus()) {
+                System.out.println("Impossibile emettere l'abbonamento. Distributore non attivo.");
+            }
+        } else {
+            throw new NoRateException(storeIntId);
+        }
+    }
+
     public long countTicketByMonth(int month){
         TypedQuery<Long> query = em.createNamedQuery("countTicketByMonth", Long.class);
         query.setParameter("month", month);

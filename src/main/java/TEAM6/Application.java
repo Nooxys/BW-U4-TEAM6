@@ -96,7 +96,6 @@ public class Application {
             System.out.println("Press 7 to verify the subscriptions based on user card!");
             System.out.println("Press 8 count how many times a transport traveled 1 specific route!");
             System.out.println("Press 9 to renew your User card!");
-            System.out.println("Press 10 to create a new rate");
             value = scanner.nextInt();
             switch (value) {
 
